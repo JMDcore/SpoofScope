@@ -1,0 +1,36 @@
+.candidategrid article {
+  position: relative;
+  overflow: hidden;
+}
+.capture {
+  width: 108px;
+  height: 76px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid var(--line);
+  flex: 0 0 108px;
+}
+.dimmed {
+  opacity: 0.58;
+}
+.modalcopy {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.6;
+}
+.spinning {
+  animation: spin 1.2s linear infinite;
+}
+.primary:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+@media (max-width: 600px) {
+  .candidategrid article {
+    flex-wrap: wrap;
+  }
+  .capture {
+    width: 100%;
+    height: 150px;
+  }
+}

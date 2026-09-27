@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#06110e"/>
+      <stop offset="1" stop-color="#0b211a"/>
+    </linearGradient>
+    <filter id="shadow"><feDropShadow dx="0" dy="20" stdDeviation="24" flood-color="#000" flood-opacity=".45"/></filter>
+    <clipPath id="screen"><rect x="570" y="90" width="760" height="510" rx="18"/></clipPath>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="105" cy="92" r="34" fill="none" stroke="#30e3a3" stroke-width="2"/>
+  <circle cx="105" cy="92" r="13" fill="none" stroke="#30e3a3" stroke-width="4"/>
+  <path d="M105 67v12m0 26v12M80 92h12m26 0h12" stroke="#30e3a3" stroke-width="3" stroke-linecap="round"/>
+  <text x="158" y="103" fill="#eef8f4" font-family="Arial,sans-serif" font-size="38" font-weight="700">SpoofScope</text>
+  <text x="76" y="225" fill="#30e3a3" font-family="monospace" font-size="15" letter-spacing="3">DEFENSIVE DOMAIN INTELLIGENCE</text>
+  <text x="76" y="286" fill="#eef8f4" font-family="Arial,sans-serif" font-size="49" font-weight="700">See exposure.</text>
+  <text x="76" y="344" fill="#eef8f4" font-family="Arial,sans-serif" font-size="49" font-weight="700">Explain signals.</text>
+  <text x="76" y="402" fill="#eef8f4" font-family="Arial,sans-serif" font-size="49" font-weight="700">Track change.</text>
+  <text x="76" y="470" fill="#90aaa0" font-family="Arial,sans-serif" font-size="19">Self-hosted · Passive · No AI dependency</text>
+  <g filter="url(#shadow)">
+    <rect x="548" y="68" width="760" height="510" rx="20" fill="#102019" stroke="#2b4a40"/>
+    <image href="dashboard.png" x="570" y="90" width="760" height="527" preserveAspectRatio="xMidYMin slice" clip-path="url(#screen)"/>
+  </g>
+  <rect x="76" y="522" width="164" height="42" rx="8" fill="#30e3a3"/>
+  <text x="158" y="549" text-anchor="middle" fill="#062018" font-family="Arial,sans-serif" font-size="15" font-weight="700">OPEN SOURCE</text>
+</svg>

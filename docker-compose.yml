@@ -1,0 +1,82 @@
+services:
+  db:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: spoofscope
+      POSTGRES_USER: spoofscope
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
+    volumes: [postgres_data:/var/lib/postgresql/data]
+    healthcheck: {test: [CMD-SHELL, pg_isready -U spoofscope], interval: 5s, timeout: 3s, retries: 10}
+    restart: unless-stopped
+  redis:
+    image: redis:7-alpine
+    command: redis-server --appendonly yes
+    volumes: [redis_data:/data]
+    healthcheck: {test: [CMD, redis-cli, ping], interval: 5s, timeout: 3s, retries: 10}
+    restart: unless-stopped
+  api:
+    build: .
+    environment:
+      SPOOFSCOPE_DATABASE_URL: postgresql+psycopg://spoofscope:${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}@db/spoofscope
+      SPOOFSCOPE_REDIS_URL: redis://redis:6379/0
+      SPOOFSCOPE_CORS_ORIGINS: http://localhost:${SPOOFSCOPE_PORT:-8080}
+      SPOOFSCOPE_API_KEY: ${SPOOFSCOPE_API_KEY:?Set SPOOFSCOPE_API_KEY in .env}
+      SPOOFSCOPE_CT_ENABLED: ${SPOOFSCOPE_CT_ENABLED:-true}
+      SPOOFSCOPE_SCREENSHOTS_ENABLED: ${SPOOFSCOPE_SCREENSHOTS_ENABLED:-true}
+      SPOOFSCOPE_MAX_CANDIDATES: ${SPOOFSCOPE_MAX_CANDIDATES:-120}
+      SPOOFSCOPE_MAX_CT_HOSTS: ${SPOOFSCOPE_MAX_CT_HOSTS:-200}
+      SPOOFSCOPE_SCAN_TIMEOUT_SECONDS: ${SPOOFSCOPE_SCAN_TIMEOUT_SECONDS:-8}
+      SPOOFSCOPE_RETENTION_DAYS: ${SPOOFSCOPE_RETENTION_DAYS:-180}
+      SPOOFSCOPE_DISAPPEARANCE_GRACE_SCANS: ${SPOOFSCOPE_DISAPPEARANCE_GRACE_SCANS:-2}
+      SPOOFSCOPE_MAX_SCREENSHOTS_PER_SCAN: ${SPOOFSCOPE_MAX_SCREENSHOTS_PER_SCAN:-8}
+      SPOOFSCOPE_SCREENSHOT_THRESHOLD: ${SPOOFSCOPE_SCREENSHOT_THRESHOLD:-35}
+      SPOOFSCOPE_REQUEST_RATE_PER_SECOND: ${SPOOFSCOPE_REQUEST_RATE_PER_SECOND:-4}
+      SPOOFSCOPE_LOG_LEVEL: ${SPOOFSCOPE_LOG_LEVEL:-INFO}
+    depends_on: {db: {condition: service_healthy}, redis: {condition: service_healthy}}
+    command: sh -c "alembic upgrade head && uvicorn spoofscope.main:app --host 0.0.0.0 --port 8000 --proxy-headers"
+    healthcheck: {test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://localhost:8000/api/health')"], interval: 15s, timeout: 5s, retries: 8}
+    restart: unless-stopped
+    volumes: [screenshot_data:/app/data/screenshots]
+    init: true
+    security_opt: [no-new-privileges:true]
+  worker:
+    build: .
+    command: python -m spoofscope.worker
+    environment:
+      SPOOFSCOPE_DATABASE_URL: postgresql+psycopg://spoofscope:${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}@db/spoofscope
+      SPOOFSCOPE_REDIS_URL: redis://redis:6379/0
+      SPOOFSCOPE_API_KEY: ${SPOOFSCOPE_API_KEY:?Set SPOOFSCOPE_API_KEY in .env}
+      SPOOFSCOPE_CT_ENABLED: ${SPOOFSCOPE_CT_ENABLED:-true}
+      SPOOFSCOPE_SCREENSHOTS_ENABLED: ${SPOOFSCOPE_SCREENSHOTS_ENABLED:-true}
+      SPOOFSCOPE_MAX_CANDIDATES: ${SPOOFSCOPE_MAX_CANDIDATES:-120}
+      SPOOFSCOPE_MAX_CT_HOSTS: ${SPOOFSCOPE_MAX_CT_HOSTS:-200}
+      SPOOFSCOPE_SCAN_TIMEOUT_SECONDS: ${SPOOFSCOPE_SCAN_TIMEOUT_SECONDS:-8}
+      SPOOFSCOPE_RETENTION_DAYS: ${SPOOFSCOPE_RETENTION_DAYS:-180}
+      SPOOFSCOPE_DISAPPEARANCE_GRACE_SCANS: ${SPOOFSCOPE_DISAPPEARANCE_GRACE_SCANS:-2}
+      SPOOFSCOPE_MAX_SCREENSHOTS_PER_SCAN: ${SPOOFSCOPE_MAX_SCREENSHOTS_PER_SCAN:-8}
+      SPOOFSCOPE_SCREENSHOT_THRESHOLD: ${SPOOFSCOPE_SCREENSHOT_THRESHOLD:-35}
+      SPOOFSCOPE_REQUEST_RATE_PER_SECOND: ${SPOOFSCOPE_REQUEST_RATE_PER_SECOND:-4}
+      SPOOFSCOPE_LOG_LEVEL: ${SPOOFSCOPE_LOG_LEVEL:-INFO}
+    depends_on: {api: {condition: service_healthy}}
+    restart: unless-stopped
+    volumes: [screenshot_data:/app/data/screenshots]
+    init: true
+    security_opt: [no-new-privileges:true]
+  scheduler:
+    build: .
+    command: python -m spoofscope.scheduler
+    environment:
+      SPOOFSCOPE_DATABASE_URL: postgresql+psycopg://spoofscope:${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}@db/spoofscope
+      SPOOFSCOPE_REDIS_URL: redis://redis:6379/0
+      SPOOFSCOPE_SCAN_INTERVAL_MINUTES: ${SPOOFSCOPE_SCAN_INTERVAL_MINUTES:-360}
+    depends_on: {api: {condition: service_healthy}}
+    restart: unless-stopped
+    init: true
+    security_opt: [no-new-privileges:true]
+  web:
+    build: ./web
+    ports: ["127.0.0.1:${SPOOFSCOPE_PORT:-8080}:80"]
+    depends_on: {api: {condition: service_healthy}}
+    restart: unless-stopped
+    security_opt: [no-new-privileges:true]
+volumes: {postgres_data: {}, redis_data: {}, screenshot_data: {}}

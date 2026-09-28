@@ -128,6 +128,84 @@
   animation: spin 850ms linear infinite;
 }
 
+.app-shell {
+  position: relative;
+  isolation: isolate;
+  background-color: var(--canvas);
+}
+
+.app-shell::before {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      115deg,
+      transparent 0 44%,
+      rgba(85, 214, 255, 0.035) 44.1%,
+      transparent 44.3%
+    ),
+    linear-gradient(
+      165deg,
+      transparent 0 66%,
+      rgba(183, 243, 74, 0.025) 66.1%,
+      transparent 66.3%
+    );
+  content: "";
+  animation: app-signal-drift 18s linear infinite;
+}
+
+@keyframes app-signal-drift {
+  from {
+    transform: translate3d(-3%, -1%, 0);
+  }
+  50% {
+    transform: translate3d(3%, 1%, 0);
+  }
+  to {
+    transform: translate3d(-3%, -1%, 0);
+  }
+}
+
+.metric-blue {
+  --metric: var(--blue);
+}
+.metric-violet {
+  --metric: var(--violet);
+}
+.metric-amber {
+  --metric: var(--amber);
+}
+
+.overview-hero .hero-kicker,
+.overview-hero .radar-caption strong,
+.capability-panel .eyebrow {
+  color: var(--blue);
+}
+
+.asset-icon,
+.asset-facts strong,
+.technology-list span {
+  color: var(--blue);
+}
+
+.badge-warn {
+  --badge-border: var(--amber);
+  --badge-bg: var(--amber-soft);
+  --badge-color: var(--amber);
+}
+
+.badge-info {
+  --badge-border: var(--blue);
+  --badge-bg: var(--blue-soft);
+  --badge-color: var(--blue);
+}
+
+.timeline-event.severity-medium {
+  --event: var(--amber);
+}
+
 @media (max-width: 1200px) {
   .metrics-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));

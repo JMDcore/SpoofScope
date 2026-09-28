@@ -57,13 +57,29 @@ const surfaceRows = [
 ];
 
 export function LandingPage({ onOpenConsole }: LandingPageProps) {
+  const [motionPaused, setMotionPaused] = useState(false);
+
   useEffect(() => {
     document.documentElement.dataset.theme = "dark";
   }, []);
 
   return (
-    <div className="landing-shell" id="top">
-      <LandingHeader onOpenConsole={onOpenConsole} />
+    <div
+      className={`landing-shell ${motionPaused ? "motion-paused" : ""}`}
+      id="top"
+    >
+      <div className="telemetry-backdrop" aria-hidden="true">
+        <i className="telemetry-line line-alpha" />
+        <i className="telemetry-line line-beta" />
+        <i className="telemetry-node node-alpha" />
+        <i className="telemetry-node node-beta" />
+        <i className="telemetry-node node-gamma" />
+      </div>
+      <LandingHeader
+        onOpenConsole={onOpenConsole}
+        motionPaused={motionPaused}
+        onToggleMotion={() => setMotionPaused((current) => !current)}
+      />
       <main>
         <section className="landing-hero">
           <div className="landing-hero-copy">
@@ -110,6 +126,9 @@ export function LandingPage({ onOpenConsole }: LandingPageProps) {
             <span className="signal-blip blip-one" />
             <span className="signal-blip blip-two" />
             <span className="signal-blip blip-three" />
+            <span className="signal-protocol protocol-dns">DNS / 04</span>
+            <span className="signal-protocol protocol-tls">TLS / 12</span>
+            <span className="signal-protocol protocol-http">HTTP / 07</span>
             <div className="signal-core">
               <Radar />
             </div>
@@ -210,7 +229,14 @@ export function LandingPage({ onOpenConsole }: LandingPageProps) {
   );
 }
 
-function LandingHeader({ onOpenConsole }: LandingPageProps) {
+function LandingHeader({
+  onOpenConsole,
+  motionPaused,
+  onToggleMotion,
+}: LandingPageProps & {
+  motionPaused: boolean;
+  onToggleMotion: () => void;
+}) {
   return (
     <header className="landing-header">
       <a className="landing-brand" href="#top" aria-label="SpoofScope home">
@@ -227,9 +253,32 @@ function LandingHeader({ onOpenConsole }: LandingPageProps) {
         <a href="#workflow">Workflow</a>
         <a href="#features">Capabilities</a>
       </nav>
-      <button className="landing-button header-button" onClick={onOpenConsole}>
-        Open console <ArrowRight />
-      </button>
+      <div className="landing-header-actions">
+        <button
+          className="motion-toggle"
+          type="button"
+          onClick={onToggleMotion}
+          aria-pressed={motionPaused}
+          aria-label={
+            motionPaused
+              ? "Resume ambient animation"
+              : "Pause ambient animation"
+          }
+          title={
+            motionPaused
+              ? "Resume ambient animation"
+              : "Pause ambient animation"
+          }
+        >
+          {motionPaused ? <Play /> : <Pause />}
+        </button>
+        <button
+          className="landing-button header-button"
+          onClick={onOpenConsole}
+        >
+          Open console <ArrowRight />
+        </button>
+      </div>
     </header>
   );
 }

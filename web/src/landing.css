@@ -2,11 +2,7 @@
   --landing-width: 1280px;
   min-height: 100vh;
   overflow: hidden;
-  background:
-    linear-gradient(rgba(115, 115, 115, 0.055) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(115, 115, 115, 0.055) 1px, transparent 1px),
-    var(--canvas);
-  background-size: 40px 40px;
+  background: var(--canvas);
   color: var(--text);
 }
 
@@ -15,18 +11,20 @@
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  background:
-    radial-gradient(
-      circle at 70% 14%,
-      rgba(85, 214, 255, 0.06),
-      transparent 28%
-    ),
-    radial-gradient(
-      circle at 18% 62%,
-      rgba(183, 243, 74, 0.035),
-      transparent 23%
-    );
+  background: linear-gradient(
+    115deg,
+    transparent 30%,
+    rgba(85, 214, 255, 0.035) 53%,
+    transparent 75%
+  );
   content: "";
+  animation: backdrop-drift 22s ease-in-out infinite alternate;
+}
+
+@keyframes backdrop-drift {
+  to {
+    transform: translate3d(4%, -2%, 0);
+  }
 }
 
 .landing-shell > *:not(.telemetry-backdrop) {
@@ -343,7 +341,7 @@
 .landing-shell.motion-paused .signal-sweep,
 .landing-shell.motion-paused .signal-blip,
 .landing-shell.motion-paused .hero-signal::after,
-.landing-shell.motion-paused .feature-visual i {
+.landing-shell.motion-paused::before {
   animation-play-state: paused !important;
 }
 
@@ -464,11 +462,7 @@
   min-height: 100%;
   place-items: center;
   overflow: hidden;
-  background:
-    linear-gradient(rgba(85, 214, 255, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(85, 214, 255, 0.06) 1px, transparent 1px),
-    #050505;
-  background-size: 28px 28px;
+  background: #050a0d;
 }
 
 .hero-signal::before {
@@ -1141,10 +1135,7 @@
   align-items: center;
   padding: 56px 48px;
   overflow: hidden;
-  background:
-    linear-gradient(rgba(115, 115, 115, 0.045) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(115, 115, 115, 0.045) 1px, transparent 1px);
-  background-size: 28px 28px;
+  background: var(--canvas-deep);
 }
 
 .flow-column {
@@ -1462,26 +1453,6 @@
   font-family: var(--font-mono);
   font-size: 10px;
   letter-spacing: 0.12em;
-}
-
-.feature-visual {
-  position: absolute;
-  right: -25px;
-  bottom: -25px;
-  display: grid;
-  width: 106px;
-  grid-template-columns: repeat(2, 1fr);
-}
-
-.feature-visual i {
-  height: 53px;
-  border-top: 1px solid var(--border);
-  border-left: 1px solid var(--border);
-  transition: background 160ms ease;
-}
-
-.feature-grid article:hover .feature-visual i:nth-child(2) {
-  background: rgba(157, 229, 0, 0.09);
 }
 
 .landing-cta {

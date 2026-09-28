@@ -660,12 +660,6 @@ function FeatureMatrix() {
             <h3>{feature.title}</h3>
             <p>{feature.copy}</p>
             <small>{feature.meta}</small>
-            <div className="feature-visual" aria-hidden="true">
-              <i />
-              <i />
-              <i />
-              <i />
-            </div>
           </article>
         ))}
       </div>

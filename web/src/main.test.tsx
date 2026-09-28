@@ -1,4 +1,10 @@
-import { cleanup, render, screen, waitFor } from "@testing-library/react";
+import {
+  cleanup,
+  fireEvent,
+  render,
+  screen,
+  waitFor,
+} from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { App } from "./main";
 
@@ -10,6 +16,7 @@ const response = (body: unknown, ok = true) =>
 
 beforeEach(() => {
   window.history.replaceState({}, "", "/app");
+  vi.stubGlobal("scrollTo", vi.fn());
 });
 
 afterEach(() => {
@@ -83,6 +90,28 @@ describe("SpoofScope application shell", () => {
     );
     expect(screen.getByText("4")).toBeTruthy();
     await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(3));
+  });
+
+  it("returns to the public home from the sidebar", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn((input: RequestInfo | URL) => {
+        if (String(input) === "/api/health") {
+          return response({ authentication_required: false });
+        }
+        if (String(input) === "/api/domains") return response([]);
+        return response({ counts: {}, events: [], scans: [] });
+      }),
+    );
+
+    render(<App />);
+    await screen.findByRole("heading", { name: "Exposure command center" });
+    fireEvent.click(screen.getByTitle("Home"));
+
+    expect(window.location.pathname).toBe("/");
+    expect(
+      screen.getByRole("heading", { name: /Know what appears around/i }),
+    ).toBeTruthy();
   });
 
   it("shows a useful error when the API cannot be reached", async () => {

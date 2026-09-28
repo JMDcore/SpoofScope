@@ -325,8 +325,7 @@
     --sidebar-width: 0px;
   }
   .app-shell {
-    background-position: 0 0;
-    background-size: 28px 28px;
+    background: var(--canvas);
   }
   .sidebar {
     inset: auto 0 0;

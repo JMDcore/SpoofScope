@@ -13,6 +13,7 @@ import {
   Database,
   Fingerprint,
   Globe2,
+  House,
   KeyRound,
   Layers3,
   LockKeyhole,
@@ -72,7 +73,7 @@ const api = async <T,>(path: string, init?: RequestInit): Promise<T> => {
 
 const formatTechnique = (value: string) => value.replaceAll("-", " ");
 
-export function ConsoleApp() {
+export function ConsoleApp({ onHome }: { onHome: () => void }) {
   const [dark, setDark] = useState(localStorage.theme !== "light");
   const [domains, setDomains] = useState<Domain[]>([]);
   const [dashboard, setDashboard] = useState<DashboardData>();
@@ -156,7 +157,12 @@ export function ConsoleApp() {
     <div className="app-shell">
       <div className="ambient ambient-one" />
       <div className="ambient ambient-two" />
-      <Sidebar domains={domains} selected={selected} onSelect={setSelected} />
+      <Sidebar
+        domains={domains}
+        selected={selected}
+        onSelect={setSelected}
+        onHome={onHome}
+      />
 
       <main className="main-content">
         <header className="topbar">
@@ -291,21 +297,29 @@ export function App() {
     return <LandingPage onOpenConsole={() => navigate("/app")} />;
   }
 
-  return <ConsoleApp />;
+  return <ConsoleApp onHome={() => navigate("/")} />;
 }
 
 function Sidebar({
   domains,
   selected,
   onSelect,
+  onHome,
 }: {
   domains: Domain[];
   selected?: number;
   onSelect: (domain?: number) => void;
+  onHome: () => void;
 }) {
   return (
     <aside className="sidebar">
-      <div className="brand-lockup">
+      <button
+        className="brand-lockup"
+        type="button"
+        onClick={onHome}
+        aria-label="Go to SpoofScope home"
+        title="Go to home"
+      >
         <div className="brand-mark">
           <Radar />
           <span />
@@ -314,7 +328,7 @@ function Sidebar({
           <strong>SpoofScope</strong>
           <small>Defensive intelligence</small>
         </div>
-      </div>
+      </button>
 
       <div className="workspace-label">
         <span>Workspace</span>
@@ -324,6 +338,16 @@ function Sidebar({
       </div>
 
       <nav className="navigation" aria-label="Main navigation">
+        <button type="button" onClick={onHome} title="Home">
+          <span className="nav-icon">
+            <House />
+          </span>
+          <span className="nav-copy">
+            <strong>Home</strong>
+            <small>Platform and product preview</small>
+          </span>
+          <ChevronRight className="nav-arrow" />
+        </button>
         <button
           className={!selected ? "active" : ""}
           onClick={() => onSelect(undefined)}

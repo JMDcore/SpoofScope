@@ -49,11 +49,7 @@ p {
 }
 .app-shell {
   min-height: 100vh;
-  background-image:
-    linear-gradient(rgba(115, 115, 115, 0.055) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(115, 115, 115, 0.055) 1px, transparent 1px);
-  background-size: 40px 40px;
-  background-position: var(--sidebar-width) 0;
+  background: var(--canvas);
 }
 .ambient {
   display: none;
@@ -75,10 +71,22 @@ p {
 }
 .brand-lockup {
   display: flex;
+  width: 100%;
   align-items: center;
   gap: 12px;
   padding: 0 4px 29px;
+  background: transparent;
+  color: var(--text);
   border-bottom: 1px solid var(--border);
+  border-top: 0;
+  border-right: 0;
+  border-left: 0;
+  cursor: pointer;
+  text-align: left;
+}
+.brand-lockup:hover .brand-mark,
+.brand-lockup:focus-visible .brand-mark {
+  border-color: var(--mint);
 }
 .brand-lockup strong {
   display: block;
@@ -483,12 +491,14 @@ p {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background-image:
-    linear-gradient(rgba(115, 115, 115, 0.11) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(115, 115, 115, 0.11) 1px, transparent 1px);
-  background-size: 32px 32px;
+  background: linear-gradient(
+    125deg,
+    transparent 22%,
+    var(--blue-soft) 60%,
+    transparent 85%
+  );
   content: "";
-  mask-image: linear-gradient(90deg, #000, transparent 82%);
+  opacity: 0.35;
 }
 .overview-hero {
   display: grid;
@@ -1354,10 +1364,12 @@ tbody tr:last-child td {
 .candidate-visual:after {
   position: absolute;
   inset: 0;
-  background-image:
-    linear-gradient(rgba(115, 115, 115, 0.07) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(115, 115, 115, 0.07) 1px, transparent 1px);
-  background-size: 20px 20px;
+  background: linear-gradient(
+    125deg,
+    transparent 35%,
+    var(--priority-soft) 65%,
+    transparent 95%
+  );
   content: "";
   pointer-events: none;
 }

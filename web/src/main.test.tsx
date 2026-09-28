@@ -58,7 +58,9 @@ describe("SpoofScope application shell", () => {
     expect(
       await screen.findByRole("heading", { name: "Exposure command center" }),
     ).toBeTruthy();
-    expect(await screen.findByText("example.com")).toBeTruthy();
+    expect((await screen.findAllByText("example.com")).length).toBeGreaterThan(
+      1,
+    );
     expect(screen.getByText("4")).toBeTruthy();
     await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(3));
   });

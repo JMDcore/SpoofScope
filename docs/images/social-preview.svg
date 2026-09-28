@@ -1,26 +1,59 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop stop-color="#06110e"/>
-      <stop offset="1" stop-color="#0b211a"/>
+      <stop stop-color="#070910"/>
+      <stop offset=".55" stop-color="#0b1019"/>
+      <stop offset="1" stop-color="#091a19"/>
     </linearGradient>
-    <filter id="shadow"><feDropShadow dx="0" dy="20" stdDeviation="24" flood-color="#000" flood-opacity=".45"/></filter>
-    <clipPath id="screen"><rect x="570" y="90" width="760" height="510" rx="18"/></clipPath>
+    <radialGradient id="glow">
+      <stop stop-color="#9de500" stop-opacity=".18"/>
+      <stop offset="1" stop-color="#9de500" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#b5f500"/>
+      <stop offset="1" stop-color="#9de500"/>
+    </linearGradient>
+    <filter id="shadow"><feDropShadow dx="0" dy="22" stdDeviation="28" flood-color="#000" flood-opacity=".5"/></filter>
+    <clipPath id="screen"><rect x="610" y="76" width="720" height="500" rx="20"/></clipPath>
   </defs>
+
   <rect width="1200" height="630" fill="url(#bg)"/>
-  <circle cx="105" cy="92" r="34" fill="none" stroke="#30e3a3" stroke-width="2"/>
-  <circle cx="105" cy="92" r="13" fill="none" stroke="#30e3a3" stroke-width="4"/>
-  <path d="M105 67v12m0 26v12M80 92h12m26 0h12" stroke="#30e3a3" stroke-width="3" stroke-linecap="round"/>
-  <text x="158" y="103" fill="#eef8f4" font-family="Arial,sans-serif" font-size="38" font-weight="700">SpoofScope</text>
-  <text x="76" y="225" fill="#30e3a3" font-family="monospace" font-size="15" letter-spacing="3">DEFENSIVE DOMAIN INTELLIGENCE</text>
-  <text x="76" y="286" fill="#eef8f4" font-family="Arial,sans-serif" font-size="49" font-weight="700">See exposure.</text>
-  <text x="76" y="344" fill="#eef8f4" font-family="Arial,sans-serif" font-size="49" font-weight="700">Explain signals.</text>
-  <text x="76" y="402" fill="#eef8f4" font-family="Arial,sans-serif" font-size="49" font-weight="700">Track change.</text>
-  <text x="76" y="470" fill="#90aaa0" font-family="Arial,sans-serif" font-size="19">Self-hosted · Passive · No AI dependency</text>
-  <g filter="url(#shadow)">
-    <rect x="548" y="68" width="760" height="510" rx="20" fill="#102019" stroke="#2b4a40"/>
-    <image href="dashboard.png" x="570" y="90" width="760" height="527" preserveAspectRatio="xMidYMin slice" clip-path="url(#screen)"/>
+  <circle cx="1090" cy="36" r="290" fill="url(#glow)"/>
+  <circle cx="120" cy="600" r="260" fill="#8b7dff" opacity=".045"/>
+  <g opacity=".2" stroke="#758096" stroke-width=".6">
+    <path d="M0 80h1200M0 160h1200M0 240h1200M0 320h1200M0 400h1200M0 480h1200M0 560h1200"/>
+    <path d="M80 0v630M160 0v630M240 0v630M320 0v630M400 0v630M480 0v630M560 0v630"/>
   </g>
-  <rect x="76" y="522" width="164" height="42" rx="8" fill="#30e3a3"/>
-  <text x="158" y="549" text-anchor="middle" fill="#062018" font-family="Arial,sans-serif" font-size="15" font-weight="700">OPEN SOURCE</text>
+
+  <g transform="translate(68 57)">
+    <rect width="54" height="54" fill="#9de500" fill-opacity=".09" stroke="#9de500" stroke-opacity=".48"/>
+    <circle cx="27" cy="27" r="17" fill="none" stroke="#9de500" stroke-opacity=".44"/>
+    <circle cx="27" cy="27" r="9" fill="none" stroke="#9de500" stroke-opacity=".72"/>
+    <circle cx="27" cy="27" r="3" fill="#9de500"/>
+    <path d="M27 27 40 14" stroke="#b5f500" stroke-width="2" stroke-linecap="round"/>
+  </g>
+  <text x="140" y="91" fill="#f4f7fb" font-family="Arial,sans-serif" font-size="29" font-weight="700">SpoofScope</text>
+  <text x="141" y="109" fill="#717a8f" font-family="monospace" font-size="8" letter-spacing="2">DEFENSIVE INTELLIGENCE</text>
+
+  <text x="68" y="208" fill="#9de500" font-family="monospace" font-size="12" font-weight="700" letter-spacing="2.5">DOMAIN EXPOSURE, EXPLAINED</text>
+  <text x="68" y="274" fill="#f4f7fb" font-family="Arial,sans-serif" font-size="48" font-weight="700">Monitor exposure.</text>
+  <text x="68" y="329" fill="#f4f7fb" font-family="Arial,sans-serif" font-size="48" font-weight="700">Prioritize signals.</text>
+  <text x="68" y="384" fill="#f4f7fb" font-family="Arial,sans-serif" font-size="48" font-weight="700">Track every change.</text>
+  <text x="68" y="433" fill="#aab2c3" font-family="Arial,sans-serif" font-size="17">Self-hosted domain monitoring and</text>
+  <text x="68" y="458" fill="#aab2c3" font-family="Arial,sans-serif" font-size="17">defensive impersonation intelligence.</text>
+
+  <g transform="translate(68 505)">
+    <rect width="150" height="39" fill="url(#accent)"/>
+    <text x="75" y="25" text-anchor="middle" fill="#031813" font-family="Arial,sans-serif" font-size="12" font-weight="700">OPEN SOURCE</text>
+    <rect x="163" width="125" height="39" fill="#171717" stroke="#262626"/>
+    <text x="225" y="25" text-anchor="middle" fill="#aab2c3" font-family="Arial,sans-serif" font-size="11" font-weight="600">SELF-HOSTED</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="588" y="54" width="760" height="544" fill="#171717" stroke="#262626"/>
+    <circle cx="618" cy="75" r="4" fill="#ff6f88" opacity=".7"/>
+    <circle cx="632" cy="75" r="4" fill="#ffc36b" opacity=".7"/>
+    <circle cx="646" cy="75" r="4" fill="#9de500" opacity=".7"/>
+    <image href="dashboard.png" x="610" y="91" width="720" height="500" preserveAspectRatio="xMidYMin slice" clip-path="url(#screen)"/>
+  </g>
 </svg>

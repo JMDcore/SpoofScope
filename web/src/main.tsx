@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
+import { LandingPage } from "./landing";
 import {
   Activity,
   AlertTriangle,
@@ -71,7 +72,7 @@ const api = async <T,>(path: string, init?: RequestInit): Promise<T> => {
 
 const formatTechnique = (value: string) => value.replaceAll("-", " ");
 
-export function App() {
+export function ConsoleApp() {
   const [dark, setDark] = useState(localStorage.theme !== "light");
   const [domains, setDomains] = useState<Domain[]>([]);
   const [dashboard, setDashboard] = useState<DashboardData>();
@@ -267,6 +268,30 @@ export function App() {
       )}
     </div>
   );
+}
+
+export function App() {
+  const [path, setPath] = useState(window.location.pathname);
+
+  useEffect(() => {
+    const handlePopState = () => setPath(window.location.pathname);
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
+  }, []);
+
+  const navigate = (nextPath: string) => {
+    if (window.location.pathname !== nextPath) {
+      window.history.pushState({}, "", nextPath);
+    }
+    setPath(nextPath);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  if (path === "/" || path === "") {
+    return <LandingPage onOpenConsole={() => navigate("/app")} />;
+  }
+
+  return <ConsoleApp />;
 }
 
 function Sidebar({

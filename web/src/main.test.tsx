@@ -1,5 +1,5 @@
 import { cleanup, render, screen, waitFor } from "@testing-library/react";
-import { afterEach, describe, expect, it, vi } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { App } from "./main";
 
 const response = (body: unknown, ok = true) =>
@@ -8,10 +8,30 @@ const response = (body: unknown, ok = true) =>
     json: () => Promise.resolve(body),
   } as Response);
 
+beforeEach(() => {
+  window.history.replaceState({}, "", "/app");
+});
+
 afterEach(() => {
   cleanup();
   localStorage.clear();
   vi.restoreAllMocks();
+});
+
+describe("SpoofScope public landing", () => {
+  it("renders an interactive product preview without contacting the API", () => {
+    window.history.replaceState({}, "", "/");
+    const fetchMock = vi.fn();
+    vi.stubGlobal("fetch", fetchMock);
+
+    render(<App />);
+
+    expect(
+      screen.getByRole("heading", { name: /Know what appears around/i }),
+    ).toBeTruthy();
+    expect(screen.getByText("Interactive product preview")).toBeTruthy();
+    expect(fetchMock).not.toHaveBeenCalled();
+  });
 });
 
 describe("SpoofScope application shell", () => {

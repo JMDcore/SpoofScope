@@ -4,7 +4,11 @@
 
 SpoofScope continuously records the public-facing assets of domains you are authorized to monitor, discovers lookalike registrations, and explains the web signals that make them worth reviewing. It preserves evidence over time without automatically accusing a domain of phishing or malicious activity.
 
-![SpoofScope dashboard](docs/images/dashboard.png)
+![SpoofScope public product page](docs/images/landing.png)
+
+The public page includes a local interactive product preview and an animated
+signal-flow explanation. It does not contact monitored domains or call the
+authenticated API. The operational console remains available at `/app`.
 
 ## Why SpoofScope
 
@@ -13,6 +17,8 @@ SpoofScope continuously records the public-facing assets of domains you are auth
 - **See evidence, not labels:** RDAP dates, forms, password inputs, brand text, DOM similarity, visual similarity, redirects, and external resources.
 - **Understand change:** immutable snapshots and explicit `NEW`, `CHANGED`, `UNCHANGED`, and grace-based `DISAPPEARED` states.
 - **Keep control:** fully self-hosted, no AI service, no SaaS dependency, configurable retention, API-key protection, and bounded passive collection.
+
+![SpoofScope dashboard](docs/images/dashboard.png)
 
 ![Domain investigation workspace](docs/images/domain-workspace.png)
 
@@ -41,7 +47,9 @@ By default, Compose binds the interface only to `127.0.0.1:8080`; it is not expo
 ssh -N -L 127.0.0.1:8080:127.0.0.1:8080 user@docker-host
 ```
 
-Use the shield button in the header to enter the API key from `.env`.
+The root URL presents the product overview and safe interactive demo. Select
+**Open console** to enter `/app`, then use the key button in the header to enter
+the API key from `.env`.
 
 To populate a safe demonstration workspace immediately:
 

@@ -91,7 +91,7 @@ p {
   margin-top: 3px;
   color: var(--text-muted);
   font-family: var(--font-mono);
-  font-size: 7px;
+  font-size: 10px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
 }
@@ -133,7 +133,7 @@ p {
   padding: 22px 4px 10px;
   color: var(--text-muted);
   font-family: var(--font-mono);
-  font-size: 8px;
+  font-size: 10px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }
@@ -206,7 +206,7 @@ p {
   margin-top: 3px;
   color: var(--text-muted);
   font-family: var(--font-mono);
-  font-size: 7px;
+  font-size: 10px;
 }
 .nav-arrow {
   width: 12px;
@@ -216,7 +216,7 @@ p {
   margin: 24px 8px 8px;
   color: var(--text-muted);
   font-family: var(--font-mono);
-  font-size: 8px;
+  font-size: 10px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }
@@ -250,7 +250,7 @@ p {
   border: 1px solid var(--border);
   color: var(--text-muted);
   font-family: var(--font-mono);
-  font-size: 8px;
+  font-size: 10px;
 }
 .sidebar-empty svg {
   width: 13px;
@@ -283,13 +283,13 @@ p {
   display: block;
 }
 .passive-card strong {
-  font-size: 9px;
+  font-size: 10px;
 }
 .passive-card small {
   margin-top: 3px;
   color: var(--text-muted);
   font-family: var(--font-mono);
-  font-size: 6px;
+  font-size: 10px;
 }
 .instance-meta {
   display: flex;
@@ -297,7 +297,7 @@ p {
   padding: 11px 0 0;
   color: var(--text-faint);
   font-family: var(--font-mono);
-  font-size: 7px;
+  font-size: 10px;
 }
 
 /* Frame and controls */
@@ -329,7 +329,7 @@ p {
   margin-bottom: 10px;
   color: var(--text-muted);
   font-family: var(--font-mono);
-  font-size: 8px;
+  font-size: 10px;
   letter-spacing: 0.13em;
   text-transform: uppercase;
 }
@@ -372,7 +372,7 @@ p {
   background: var(--surface);
   color: var(--text-soft);
   font-family: var(--font-mono);
-  font-size: 8px;
+  font-size: 10px;
 }
 .system-pill i,
 .live-label i {
@@ -453,7 +453,7 @@ p {
 .alert-banner p {
   margin: 4px 0 0;
   color: var(--text-soft);
-  font-size: 9px;
+  font-size: 10px;
 }
 .alert-banner button {
   display: grid;
@@ -512,7 +512,7 @@ p {
   margin-bottom: 20px;
   color: var(--mint);
   font-family: var(--font-mono);
-  font-size: 9px;
+  font-size: 10px;
   font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -549,7 +549,7 @@ p {
   background: #000;
   color: var(--text-muted);
   font-family: var(--font-mono);
-  font-size: 7px;
+  font-size: 10px;
   letter-spacing: 0.05em;
   text-transform: uppercase;
 }
@@ -647,7 +647,7 @@ p {
   align-items: center;
   gap: 7px;
   font-family: var(--font-mono);
-  font-size: 7px;
+  font-size: 10px;
 }
 .radar-caption strong {
   color: var(--mint);
@@ -707,7 +707,7 @@ p {
   gap: 8px;
   color: var(--text-muted);
   font-family: var(--font-mono);
-  font-size: 7px;
+  font-size: 10px;
   letter-spacing: 0.11em;
   text-transform: uppercase;
 }
@@ -745,7 +745,7 @@ p {
 .metric-footer small {
   max-width: 160px;
   color: var(--text-muted);
-  font-size: 8px;
+  font-size: 10px;
   line-height: 1.4;
 }
 .micro-bars {
@@ -790,7 +790,7 @@ p {
   margin-bottom: 8px;
   color: var(--mint);
   font-family: var(--font-mono);
-  font-size: 8px;
+  font-size: 10px;
   font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -861,7 +861,7 @@ p {
   background: var(--surface-soft);
   color: var(--text-soft);
   font-family: var(--font-mono);
-  font-size: 7px;
+  font-size: 10px;
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
@@ -926,7 +926,7 @@ p {
   margin-top: 3px;
   color: var(--text-muted);
   font-family: var(--font-mono);
-  font-size: 7px;
+  font-size: 10px;
 }
 .domain-observation {
   min-width: 95px;
@@ -934,7 +934,7 @@ p {
 .domain-observation strong {
   margin-top: 3px;
   font-family: var(--font-mono);
-  font-size: 8px;
+  font-size: 10px;
   font-weight: 500;
 }
 .domain-open {
@@ -943,7 +943,7 @@ p {
   gap: 5px;
   color: var(--text-muted);
   font-family: var(--font-mono);
-  font-size: 7px;
+  font-size: 10px;
   text-transform: uppercase;
 }
 .domain-open svg {
@@ -955,7 +955,7 @@ p {
   gap: 7px;
   color: var(--text-muted);
   font-family: var(--font-mono);
-  font-size: 7px;
+  font-size: 10px;
   text-transform: uppercase;
 }
 .table-shell {
@@ -968,7 +968,7 @@ table {
   width: 100%;
   border-collapse: collapse;
   font-family: var(--font-mono);
-  font-size: 8px;
+  font-size: 10px;
 }
 th,
 td {
@@ -980,7 +980,7 @@ td {
 th {
   background: var(--surface-soft);
   color: var(--text-muted);
-  font-size: 7px;
+  font-size: 10px;
   font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -998,7 +998,7 @@ tbody tr:last-child td {
 .subject-key {
   color: var(--text-soft);
   font-family: var(--font-mono);
-  font-size: 8px;
+  font-size: 10px;
 }
 .collection-bar {
   width: min(100%, 140px);
@@ -1020,7 +1020,7 @@ tbody tr:last-child td {
   background: var(--badge-bg, var(--surface-soft));
   color: var(--badge-color, var(--text-soft));
   font-family: var(--font-mono);
-  font-size: 7px;
+  font-size: 10px;
   font-weight: 600;
   letter-spacing: 0.06em;
   line-height: 1;
@@ -1060,7 +1060,7 @@ tbody tr:last-child td {
   background: #000;
   color: var(--text-muted);
   font-family: var(--font-mono);
-  font-size: 8px;
+  font-size: 10px;
   cursor: pointer;
   transition:
     border-color 130ms ease,
@@ -1128,7 +1128,7 @@ tbody tr:last-child td {
   gap: 7px 15px;
   color: var(--text-muted);
   font-family: var(--font-mono);
-  font-size: 7px;
+  font-size: 10px;
 }
 .domain-facts span {
   display: inline-flex;
@@ -1155,7 +1155,7 @@ tbody tr:last-child td {
 .domain-status-card > span {
   color: var(--text-muted);
   font-family: var(--font-mono);
-  font-size: 7px;
+  font-size: 10px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
@@ -1221,7 +1221,7 @@ tbody tr:last-child td {
 .asset-card-head small {
   margin-top: 3px;
   color: var(--text-muted);
-  font-size: 7px;
+  font-size: 10px;
 }
 .asset-facts {
   display: grid;
@@ -1248,14 +1248,14 @@ tbody tr:last-child td {
 .asset-facts small {
   color: var(--text-muted);
   font-family: var(--font-mono);
-  font-size: 6px;
+  font-size: 10px;
   text-transform: uppercase;
 }
 .asset-facts strong {
   margin-top: 5px;
   overflow: hidden;
   font-family: var(--font-mono);
-  font-size: 9px;
+  font-size: 10px;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -1278,7 +1278,7 @@ tbody tr:last-child td {
   gap: 5px;
   color: var(--text-muted);
   font-family: var(--font-mono);
-  font-size: 6px;
+  font-size: 10px;
   text-transform: uppercase;
 }
 .asset-pulse i {
@@ -1296,7 +1296,7 @@ tbody tr:last-child td {
   padding: 5px 7px;
   border: 1px solid var(--border);
   font-family: var(--font-mono);
-  font-size: 6px;
+  font-size: 10px;
   text-transform: uppercase;
 }
 .priority-legend .low {
@@ -1379,7 +1379,7 @@ tbody tr:last-child td {
   gap: 8px;
   color: var(--text-muted);
   font-family: var(--font-mono);
-  font-size: 7px;
+  font-size: 10px;
   text-transform: uppercase;
 }
 .capture-placeholder svg {
@@ -1400,7 +1400,7 @@ tbody tr:last-child td {
   background: #000;
   color: var(--priority);
   font-family: var(--font-mono);
-  font-size: 6px;
+  font-size: 10px;
   font-weight: 600;
   text-transform: uppercase;
 }
@@ -1420,7 +1420,7 @@ tbody tr:last-child td {
   margin-bottom: 5px;
   color: var(--priority);
   font-family: var(--font-mono);
-  font-size: 7px;
+  font-size: 10px;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -1472,7 +1472,7 @@ tbody tr:last-child td {
 .score-ring small {
   margin-top: 2px;
   color: var(--text-muted);
-  font-size: 6px;
+  font-size: 10px;
 }
 .candidate-state-row {
   display: flex;
@@ -1484,7 +1484,7 @@ tbody tr:last-child td {
 .candidate-state-row > span:last-child {
   overflow: hidden;
   color: var(--text-muted);
-  font-size: 8px;
+  font-size: 10px;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -1532,13 +1532,13 @@ tbody tr:last-child td {
 .candidate-footer small {
   color: var(--text-muted);
   font-family: var(--font-mono);
-  font-size: 6px;
+  font-size: 10px;
   text-transform: uppercase;
 }
 .candidate-footer strong {
   margin-top: 4px;
   font-family: var(--font-mono);
-  font-size: 8px;
+  font-size: 10px;
 }
 .history-table td:nth-child(2) {
   max-width: 240px;
@@ -1605,7 +1605,7 @@ tbody tr:last-child td {
   gap: 4px;
   color: var(--text-muted);
   font-family: var(--font-mono);
-  font-size: 6px;
+  font-size: 10px;
   white-space: nowrap;
 }
 .timeline-meta time svg {
@@ -1620,7 +1620,7 @@ tbody tr:last-child td {
 .timeline-content p {
   margin-bottom: 0;
   color: var(--text-muted);
-  font-size: 8px;
+  font-size: 10px;
   line-height: 1.55;
 }
 .empty-state {
@@ -1662,7 +1662,7 @@ tbody tr:last-child td {
 .empty-state p {
   max-width: 340px;
   margin-bottom: 0;
-  font-size: 8px;
+  font-size: 10px;
   line-height: 1.6;
 }
 .loading-state {
@@ -1717,7 +1717,7 @@ tbody tr:last-child td {
 .loading-state p {
   margin: 6px 0 16px;
   color: var(--text-muted);
-  font-size: 8px;
+  font-size: 10px;
 }
 .loading-bars {
   display: flex;
@@ -1793,13 +1793,13 @@ tbody tr:last-child td {
   margin-bottom: 7px;
   color: var(--text-soft);
   font-family: var(--font-mono);
-  font-size: 8px;
+  font-size: 10px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 .field-label > span small {
   color: var(--text-muted);
-  font-size: 7px;
+  font-size: 10px;
 }
 .input-shell {
   display: flex;
@@ -1869,14 +1869,14 @@ tbody tr:last-child td {
 }
 .authorization-check > span:last-child {
   color: var(--text-muted);
-  font-size: 8px;
+  font-size: 10px;
   line-height: 1.5;
 }
 .authorization-check strong {
   display: block;
   margin-bottom: 3px;
   color: var(--text);
-  font-size: 9px;
+  font-size: 10px;
 }
 .privacy-note {
   display: flex;
@@ -1887,7 +1887,7 @@ tbody tr:last-child td {
   background: #000;
   color: var(--text-soft);
   font-family: var(--font-mono);
-  font-size: 7px;
+  font-size: 10px;
 }
 .privacy-note svg {
   width: 13px;
@@ -1900,7 +1900,7 @@ tbody tr:last-child td {
   background: var(--danger-soft);
   color: var(--danger);
   font-family: var(--font-mono);
-  font-size: 8px;
+  font-size: 10px;
 }
 .modal-submit {
   width: 100%;

@@ -306,7 +306,7 @@
     border-bottom: 1px solid var(--border);
   }
   .breadcrumb {
-    font-size: 7px;
+    font-size: 10px;
   }
   .topbar h1 {
     font-size: 28px;
@@ -362,7 +362,7 @@
     font-size: 28px;
   }
   .metric-footer small {
-    font-size: 7px;
+    font-size: 10px;
   }
   .micro-bars {
     display: none;

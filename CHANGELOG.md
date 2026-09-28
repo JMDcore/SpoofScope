@@ -2,7 +2,7 @@
 
 All notable changes are documented here. This project follows semantic versioning.
 
-## 1.0.0 — 2026-09-27
+## 1.0.0 — 2026-09-28
 
 ### Added
 

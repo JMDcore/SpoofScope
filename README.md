@@ -2,6 +2,10 @@
 
 **Self-hosted defensive monitoring for domain exposure, typosquatting, and brand impersonation.**
 
+[![CI](https://github.com/JMDcore/SpoofScope/actions/workflows/ci.yml/badge.svg)](https://github.com/JMDcore/SpoofScope/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-f1f6f7.svg)](LICENSE)
+[![Release: v1.0.0](https://img.shields.io/badge/release-v1.0.0-b7f34a.svg)](CHANGELOG.md)
+
 SpoofScope continuously records the public-facing assets of domains you are authorized to monitor, discovers lookalike registrations, and explains the web signals that make them worth reviewing. It preserves evidence over time without automatically accusing a domain of phishing or malicious activity.
 
 ![SpoofScope public product page](docs/images/landing.png)
